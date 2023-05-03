@@ -17,6 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('npm', 15);
             $table->string('nama', 150);
+            $table->string('password');
+            $table->enum('program_studi', [
+                'Teknik Pertambangan',
+                'Perencanaan Wilayah dan Kota',
+                'Teknik Industri'
+            ]);
             $table->integer('angkatan');
             $table->string('telepon', 15)->nullable();
             $table->string('email')->nullable();

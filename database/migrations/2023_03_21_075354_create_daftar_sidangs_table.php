@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('daftar_sidang', function (Blueprint $table) {
             $table->id();
-            $table->integer('mahasiswa_id');
-            $table->integer('tahun_ajaran_id');
-            $table->integer('dosen1_id');
-            $table->integer('dosen2_id');
+            $table->bigInteger('mahasiswa_id')->unsigned();
+            $table->bigInteger('tahun_ajaran_id')->unsigned();
+            $table->bigInteger('dosen1_id')->unsigned();
+            $table->bigInteger('dosen2_id')->unsigned();
             $table->text('judul_skripsi');
             $table->dateTime('tanggal_pengajuan');
             $table->string('syarat_1');
@@ -43,6 +43,10 @@ return new class extends Migration
             $table->string('syarat_20');
             $table->tinyInteger('status');
             $table->text('keterangan');
+            $table->foreign('mahasiswa_id')->references('id')->on('mahasiswa')->onDelete('cascade');
+            $table->foreign('tahun_ajaran_id')->references('id')->on('tahun_ajaran')->onDelete('cascade');
+            $table->foreign('dosen1_id')->references('id')->on('dosen')->onDelete('cascade');
+            $table->foreign('dosen2_id')->references('id')->on('dosen')->onDelete('cascade');
             $table->timestamps();
         });
     }

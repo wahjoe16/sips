@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('mobile');
             $table->string('password');
-            $table->string('photo');
+            $table->string('foto');
             $table->tinyInteger('status');
             $table->timestamps();
         });

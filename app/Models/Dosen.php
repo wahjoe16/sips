@@ -9,5 +9,5 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Dosen extends Authenticatable
 {
     use HasFactory;
-    protected $guard = 'dosen';
+    protected $table = 'dosen';
 }

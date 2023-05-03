@@ -128,6 +128,9 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         // Route untuk tambah dan edit dosen
         Route::match(['get', 'post'], '/add-edit-dosen/{id?}', [DosenController::class, 'addEditDosen'])->name('addEditDosen');
 
+        // Route untuk import dosen
+        Route::post('/import-dosen', [DosenController::class, 'importDosen'])->name('importDosen');
+
         // Route untuk plot status dosen koordinator sidang skripsi
         Route::post('update-dosen-status/{id}', [DosenController::class, 'updateDosenStatus'])->name('updateDosenStatus');
 
@@ -136,6 +139,9 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 
         // Route untuk tambah dan edit mahasiswa
         Route::match(['get', 'post'], '/add-edit-mahasiswa/{id?}', [MahasiswaController::class, 'addEditMahasiswa'])->name('addEditMahasiswa');
+
+        // Route untuk halaman import mahasiswa
+        Route::get('import-page-mahasiswa', [MahasiswaController::class, 'pageImportMahasiswa'])->name('pageImportMahasiswa');
 
         // Route untuk import mahasiswa
         Route::post('/import-mahasiswa', [MahasiswaController::class, 'importMahasiswa'])->name('importMahasiswa');

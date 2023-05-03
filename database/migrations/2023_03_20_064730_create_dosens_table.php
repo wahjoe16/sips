@@ -13,13 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dosens', function (Blueprint $table) {
+        Schema::create('dosen', function (Blueprint $table) {
             $table->id();
             $table->string('nik', 10);
+            $table->string('nama', 100);
+            $table->string('password');
+            $table->string('email');
             $table->string('jabatan', 50)->nullable();
             $table->string('telepon', 17)->nullable();
             $table->integer('kelompok_studi_id')->nullable()->index();
+            $table->enum('program_studi', [
+                'Teknik Pertambangan',
+                'Perencanaan Wilayah dan Kota',
+                'Teknik Industri'
+            ]);
             $table->enum('tipe', ['internal', 'eksternal'])->default('internal');
+            $table->string('foto', 50);
             $table->tinyInteger('status_koordinator');
             $table->timestamps();
         });
@@ -32,6 +41,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dosens');
+        Schema::dropIfExists('dosen');
     }
 };

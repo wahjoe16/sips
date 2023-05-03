@@ -10,5 +10,5 @@ class Mahasiswa extends Authenticatable
 {
     use HasFactory;
     protected $table = 'mahasiswa';
-    protected $guard = 'mahasiswa';
+    protected $fillable = ['npm', 'nama', 'password'];
 }

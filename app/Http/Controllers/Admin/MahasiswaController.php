@@ -7,6 +7,7 @@ use App\Models\DaftarSidang;
 use App\Models\Dosen;
 use App\Models\Mahasiswa;
 use App\Models\TahunAjaran;
+use App\Imports\MahasiswaImport;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MahasiswaController extends Controller
 {
@@ -794,5 +796,22 @@ class MahasiswaController extends Controller
 
 
         return view('admin.mahasiswa.add_edit_mahasiswa', compact('message', 'title', 'mahasiswa'));
+    }
+
+    public function pageImportMahasiswa()
+    {
+        return view('admin.mahasiswa.page_import_mahasiswa');
+    }
+
+    public function importMahasiswa()
+    {
+        $import = new MahasiswaImport();
+        Excel::import($import, request()->file('file'));
+
+        if ($import->failures()->isNotEmpty()) {
+            return back()->withFailures($import->failures());
+        }
+
+        return redirect()->route('viewMahasiswa')->with('success_message', 'Sukses Import Data Mahasiswa');
     }
 }

@@ -6,9 +6,14 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Dosen</h4>
-                    <a href="{{ route('addEditDosen') }}" class="btn btn-success btn-block" style="max-width: 150px; float: right; display:inline-block;">
-                        + Data Dosen
-                    </a>
+                    <div class="btn-group">
+                        <a href="{{ route('addEditDosen') }}" class="btn btn-success">
+                            <i class="mdi mdi-plus"></i>
+                        </a>
+                        <a href="{{ route('importDosen') }}" class="btn btn-info">
+                            <i class="mdi mdi-upload"></i>
+                        </a>
+                    </div><br><br>
                     @if(Session::has('error_message'))
                     <div class="alert alert-danger alert-dismissible fade show">
                         <strong>Error: </strong>{{ Session::get('error_message') }}

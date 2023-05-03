@@ -25,7 +25,7 @@ class AdminTableSeeder extends Seeder
                 'mobile' => '082240312828',
                 'password' => '$2a$12$//4i16Wnq0Zw/YjinPM3teqgpH9QHTcqFrvUmMEuCQg4JAIExdhym',
                 'status' => 1,
-                'photo' => '',
+                'foto' => '',
             ]
         ];
 
