@@ -10,7 +10,7 @@
                         <a href="{{ route('addEditDosen') }}" class="btn btn-success">
                             <i class="mdi mdi-plus"></i>
                         </a>
-                        <a href="{{ route('importDosen') }}" class="btn btn-info">
+                        <a href="{{ route('pageImportDosen') }}" class="btn btn-info">
                             <i class="mdi mdi-upload"></i>
                         </a>
                     </div><br><br>
@@ -31,6 +31,43 @@
                         </button>
                     </div>
                     @endif
+
+                    @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+
+                    @if (session()->has('failures'))
+                    <table class="table table-danger">
+                        <tr>
+                            <th>Baris</th>
+                            <th>Attributes</th>
+                            <th>Error</th>
+                            <th>Value</th>
+                        </tr>
+                        @foreach (session()->get('failures') as $validasi)
+                        <tr>
+                            <td>{{ $validasi->row() }}</td>
+                            <td>{{ $validasi->attribute() }}</td>
+                            <td>
+                                <ul>
+                                    @foreach ($validasi->errors() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </td>
+                            <td>{{ $validasi->values()[$validasi->attribute()] }}</td>
+                        </tr>
+                        @endforeach
+                    </table>
+                    @endif
+
                     <div class="table-responsive pt-3">
                         <table id="dosen" class="table table-striped">
                             <thead>

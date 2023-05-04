@@ -809,9 +809,68 @@ class MahasiswaController extends Controller
         Excel::import($import, request()->file('file'));
 
         if ($import->failures()->isNotEmpty()) {
-            return back()->withFailures($import->failures());
+            return redirect()->route('viewMahasiswa')->withFailures($import->failures());
         }
 
         return redirect()->route('viewMahasiswa')->with('success_message', 'Sukses Import Data Mahasiswa');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $mahasiswa = Auth::guard('mahasiswa')->user();
+        if ($request->isMethod('POST')) {
+            $data = $request->all();
+
+            if ($request->hasFile('foto')) {
+                $foto_tmp = $request->file('foto');
+                if ($foto_tmp->isValid()) {
+                    $extension = $foto_tmp->getClientOriginalExtension();
+                    $fotoName = rand(111, 99999) . '.' . $extension;
+                    $fotoPath = 'mahasiswa/foto/' . $fotoName;
+
+                    Image::make($foto_tmp)->save($fotoPath);
+                }
+            } elseif (!empty($data['current_mahasiswa_foto'])) {
+                $fotoName = $data['current_mahasiswa_foto'];
+            } else {
+                $fotoName = '';
+            }
+
+            Mahasiswa::where('id', Auth::guard('mahasiswa')->user()->id)->update([
+                'nama' => $data['nama'],
+                'foto' => $fotoName,
+                'telepon' => $data['telepon'],
+                'email' => $data['email'],
+                'program_studi' => $data['program_studi'],
+            ]);
+
+            return redirect()->back()->with('success_message', 'Profil Berhasil diupdate');
+        }
+
+        return view('mahasiswa.update_profile', compact('mahasiswa'));
+    }
+
+    public function updatePassword(Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            $mahasiswa = Auth::guard('mahasiswa')->user();
+
+            if ($request->has('password') && $request->password != '') {
+                if (Hash::check($request->old_password, $mahasiswa->password)) {
+                    if ($request->password == $request->password_confirmation) {
+                        $mahasiswa->password = bcrypt($request->password);
+                    } else {
+                        return redirect()->back()->with('error_message', 'Konfirmasi password tidak sesuai');
+                    }
+                } else {
+                    return redirect()->back()->with('error_message', 'Password lama anda salah');
+                }
+            }
+
+            $mahasiswa->save();
+            return redirect()->back()->with('success_message', 'Password anda berhasil diupdate');
+        }
+
+        return view('mahasiswa.update_password');
     }
 }

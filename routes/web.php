@@ -50,10 +50,10 @@ Route::prefix('/mahasiswa')->group(function () {
         Route::get('/dashboard', [MahasiswaController::class, 'dashboardMahasiswa'])->name('dashboardMahasiswa');
 
         // Route untuk update profil mahasiswa
-        Route::match(['get', 'post'], '/update-mahasiswa-profile', [MahasiswaController::class, 'updateProfileMahasiswa'])->name('updateProfileMahasiswa');
+        Route::match(['get', 'post'], '/update-mahasiswa-profile', [MahasiswaController::class, 'updateProfile'])->name('updateProfileMahasiswa');
 
         // Route untuk update password Mahasiswa
-        Route::match(['get', 'post'], '/update-mahasiswa-password', [MahasiswaController::class, 'updatePasswordMahasiswa'])->name('updatePasswordMahasiswa');
+        Route::match(['get', 'post'], '/update-mahasiswa-password', [MahasiswaController::class, 'updatePassword'])->name('updatePasswordMahasiswa');
 
         // Route untuk daftar sidang
         Route::match(['get', 'post'], '/daftar-sidang/{slug}', [MahasiswaController::class, 'daftarSidang'])->name('daftarSidang');
@@ -73,10 +73,10 @@ Route::prefix('/dosen')->group(function () {
         Route::get('/dashboard', [DosenController::class, 'dashboardDosen'])->name('dashboardDosen');
 
         // Route untuk update profil dosen
-        Route::match(['get', 'post'], '/update-dosen-profile', [DosenController::class, 'updateProfileDosen'])->name('updateProfileDosen');
+        Route::match(['get', 'post'], '/update-dosen-profile', [DosenController::class, 'updateProfile'])->name('updateProfileDosen');
 
         // Route untuk update password Dosen
-        Route::match(['get', 'post'], '/update-dosen-password', [DosenController::class, 'updatePasswordDosen'])->name('updatePasswordDosen');
+        Route::match(['get', 'post'], '/update-dosen-password', [DosenController::class, 'updatePassword'])->name('updatePasswordDosen');
 
         // Route untuk view daftar sidang mahasiswa
         Route::get('/view-daftar-sidang/{slug}', [DosenController::class, 'viewDaftarSidang'])->name('viewDaftarSidang');
@@ -127,6 +127,9 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 
         // Route untuk tambah dan edit dosen
         Route::match(['get', 'post'], '/add-edit-dosen/{id?}', [DosenController::class, 'addEditDosen'])->name('addEditDosen');
+
+        // Route untuk halaman import dosen
+        Route::get('import-page-dosen', [DosenController::class, 'pageImportDosen'])->name('pageImportDosen');
 
         // Route untuk import dosen
         Route::post('/import-dosen', [DosenController::class, 'importDosen'])->name('importDosen');

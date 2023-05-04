@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Imports\DosenImport;
 use App\Models\DaftarSidang;
 use App\Models\Dosen;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DosenController extends Controller
 {
@@ -90,7 +92,7 @@ class DosenController extends Controller
     {
         if ($id == null) {
             $title = "Tambah Data Dosen";
-            $dosen = new Dosen;
+            $dosen = new Dosen();
             $message = "Data Dosen Berhasil Ditambahkan";
         } else {
             $title = "Edit Data Dosen";
@@ -163,5 +165,81 @@ class DosenController extends Controller
             Dosen::where($id, $data['dosen_id'])->update(['status_koordinator' => $status]);
             return response()->json(['status' => $status, 'dosen_id' => $data['dosen_id']]);
         }
+    }
+
+    public function pageImportDosen()
+    {
+        return view('admin.dosen.page_import_dosen');
+    }
+
+    public function importDosen()
+    {
+        $import = new DosenImport();
+        Excel::import($import, request()->file('file'));
+
+        if ($import->failures()->isNotEmpty()) {
+            return redirect()->route('viewDosen')->withFailures($import->failures());
+        }
+
+        return redirect()->route('viewDosen')->with('success_message', 'Sukses Import Data Dosen');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $dosen = Auth::guard('dosen')->user();
+        if ($request->isMethod('POST')) {
+            $data = $request->all();
+
+            if ($request->hasFile('foto')) {
+                $foto_tmp = $request->file('foto');
+                if ($foto_tmp->isValid()) {
+                    $extension = $foto_tmp->getClientOriginalExtension();
+                    $fotoName = rand(111, 99999) . '.' . $extension;
+                    $fotoPath = 'dosen/foto/' . $fotoName;
+
+                    Image::make($foto_tmp)->save($fotoPath);
+                }
+            } elseif (!empty($data['current_dosen_foto'])) {
+                $fotoName = $data['current_dosen_foto'];
+            } else {
+                $fotoName = '';
+            }
+
+            Dosen::where('id', Auth::guard('dosen')->user()->id)->update([
+                'nama' => $data['nama'],
+                'foto' => $fotoName,
+                'telepon' => $data['telepon'],
+                'email' => $data['email'],
+                'program_studi' => $data['program_studi'],
+            ]);
+
+            return redirect()->back()->with('success_message', 'Profil Berhasil diupdate');
+        }
+
+        return view('dosen.update_profile', compact('dosen'));
+    }
+
+    public function updatePassword(Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            $dosen = Auth::guard('dosen')->user();
+
+            if ($request->has('password') && $request->password != '') {
+                if (Hash::check($request->old_password, $dosen->password)) {
+                    if ($request->password == $request->password_confirmation) {
+                        $dosen->password = bcrypt($request->password);
+                    } else {
+                        return redirect()->back()->with('error_message', 'Konfirmasi password tidak sesuai');
+                    }
+                } else {
+                    return redirect()->back()->with('error_message', 'Password lama anda salah');
+                }
+            }
+
+            $dosen->save();
+            return redirect()->back()->with('success_message', 'Password anda berhasil diupdate');
+        }
+
+        return view('dosen.update_password');
     }
 }

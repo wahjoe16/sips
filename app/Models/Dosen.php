@@ -9,5 +9,5 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Dosen extends Authenticatable
 {
     use HasFactory;
-    protected $table = 'dosen';
+    protected $fillable = ['nik', 'nama', 'program_studi', 'tipe', 'password'];
 }
