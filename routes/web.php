@@ -56,6 +56,9 @@ Route::prefix('/mahasiswa')->group(function () {
         Route::match(['get', 'post'], '/update-mahasiswa-password', [MahasiswaController::class, 'updatePassword'])->name('updatePasswordMahasiswa');
 
         // Route untuk daftar sidang
+        Route::match(['get', 'post'], '/daftar-seminar/{slug}', [MahasiswaController::class, 'daftarSeminar'])->name('daftarSeminar');
+
+        // Route untuk daftar sidang
         Route::match(['get', 'post'], '/daftar-sidang/{slug}', [MahasiswaController::class, 'daftarSidang'])->name('daftarSidang');
 
         // Route untuk logout admin
@@ -78,11 +81,23 @@ Route::prefix('/dosen')->group(function () {
         // Route untuk update password Dosen
         Route::match(['get', 'post'], '/update-dosen-password', [DosenController::class, 'updatePassword'])->name('updatePasswordDosen');
 
+        // Route untuk view daftar seminar mahasiswa
+        Route::get('/view-daftar-seminar/{slug}', [DosenController::class, 'viewDaftarSeminar'])->name('viewDaftarSeminar');
+
+        // route rekap daftar seminar
+        Route::get('/rekap-daftar-seminar/{slug}', [DosenController::class, 'rekapDaftarSeminar'])->name('rekapDaftarSeminar');
+
+        // route show rekap seminar mahasiswa
+        Route::get('/show-rekap-seminar/{slug}', [DosenController::class, 'showRekapSeminar'])->name('showRekapSeminar');
+
         // Route untuk view daftar sidang mahasiswa
         Route::get('/view-daftar-sidang/{slug}', [DosenController::class, 'viewDaftarSidang'])->name('viewDaftarSidang');
 
         // Route untuk approval daftar sidang mahasiswa
-        Route::get('/approval-daftar-sidang/{id}', [DosenController::class, 'showDaftarSidang'])->name('showDaftarSidang');
+        Route::match(['get', 'post'], '/approval-daftar-seminar/{id}', [DosenController::class, 'showDaftarSeminar'])->name('showDaftarSeminar');
+
+        // Route untuk approval daftar sidang mahasiswa
+        Route::match(['get', 'post'], '/approval-daftar-sidang/{id}', [DosenController::class, 'showDaftarSidang'])->name('showDaftarSidang');
 
         // Route logout dosen
         Route::get('/logout', [DosenController::class, 'logoutDosen'])->name('logoutDosen');

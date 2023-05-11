@@ -7,8 +7,8 @@
             </a>
         </li>
         @if (Auth::guard('admin')->user()->type == 'admin')
-        <li class="nav-item" @if(Session::get('page')=="view_admin" || Session::get('page')=="view_subadmin" || Session::get('page')=="view_vendor" || Session::get('page')=="view_all" ) style="background: #4B49AC !important; color:#fff !important;" @endif>
-            <a class="nav-link" data-toggle="collapse" href="#ui-admin" aria-expanded="false" aria-controls="ui-admin">
+        <li class="nav-item">
+            <a @if(Session::get('page')=="dosen" || Session::get('page')=="mahasiswa" || Session::get('page')=="semester" || Session::get('page')=="tahun_ajaran" ) style="background: #4B49AC !important; color:#fff !important;" @endif class="nav-link" data-toggle="collapse" href="#ui-admin" aria-expanded="false" aria-controls="ui-admin">
                 <i class="icon-head menu-icon"></i>
                 <span class="menu-title">Data Master</span>
                 <i class="menu-arrow"></i>

@@ -334,7 +334,7 @@
                                                 <select name="tahun_ajaran_id" id="tahun_ajaran_id" class="form-control text-dark">
                                                     <option value="">Pilih</option>
                                                     @foreach($tahunAjaran as $ta)
-                                                    <option value="{{ $ta['id'] }}">{{ $ta['tahun_ajaran'] }} - {{ $ta['semesterx']['semester'] }}</option>
+                                                    <option value="{{ $ta['id'] }}">{{ $ta['tahun_ajaran'] }} / {{ $ta['semesterx']['semester'] }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -354,73 +354,25 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <p class="card-description">Upload Persyaratan</p>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 1</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_1" class="form-control" id="syarat_1">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_2">Syarat 2</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_2" class="form-control" id="syarat_2">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 3</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_3" class="form-control" id="syarat_3">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 4</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_4" class="form-control" id="syarat_4">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 5</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_5" class="form-control" id="syarat_5">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_6">Syarat 6</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_6" class="form-control" id="syarat_6">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_7">Syarat 7</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_7" class="form-control" id="syarat_7">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_8">Syarat 8</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_8" class="form-control" id="syarat_8">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_9">Syarat 9</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_9" class="form-control" id="syarat_9">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_10">Syarat 10</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_10" class="form-control" id="syarat_10">
-                                                    </div>
-                                                </div>
+
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_1">Bukti pembayaran sidang terbuka</label>
+                                            <div class="col-sm-7">
+                                                <input type="file" name="syarat_1" class="dropify" id="syarat_1">
                                             </div>
                                         </div>
-
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_2">Hasil pemeriksaan resmi turnitin</label>
+                                            <div class="col-sm-7">
+                                                <input type="file" name="syarat_2" class="dropify" id="syarat_2">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_1">Transkip nilai</label>
+                                            <div class="col-sm-7">
+                                                <input type="file" name="syarat_3" class="dropify" id="syarat_3">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -464,3 +416,9 @@
 </div>
 
 @endsection
+
+@push('scripts')
+<script>
+    $('.dropify').dropify();
+</script>
+@endpush

@@ -45,8 +45,8 @@ return new class extends Migration
             $table->text('keterangan');
             $table->foreign('mahasiswa_id')->references('id')->on('mahasiswa')->onDelete('cascade');
             $table->foreign('tahun_ajaran_id')->references('id')->on('tahun_ajaran')->onDelete('cascade');
-            $table->foreign('dosen1_id')->references('id')->on('dosen')->onDelete('cascade');
-            $table->foreign('dosen2_id')->references('id')->on('dosen')->onDelete('cascade');
+            $table->foreign('dosen1_id')->references('id')->on('dosens')->onDelete('cascade');
+            $table->foreign('dosen2_id')->references('id')->on('dosens')->onDelete('cascade');
             $table->timestamps();
         });
     }

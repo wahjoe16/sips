@@ -11,4 +11,13 @@ class Mahasiswa extends Authenticatable
     use HasFactory;
     protected $table = 'mahasiswa';
     protected $fillable = ['npm', 'nama', 'password'];
+
+    public function getFotoPathAttribute()
+    {
+        if ($this->foto != '') {
+            return url('/mahasiswa/foto/' . $this->foto);
+        } else {
+            return 'http://placehold.it/850x618';
+        }
+    }
 }

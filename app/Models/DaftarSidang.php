@@ -9,6 +9,7 @@ class DaftarSidang extends Model
 {
     use HasFactory;
     protected $table = 'daftar_sidang';
+    protected $fillable = ['status', 'keterangan'];
 
     public function dosen_1()
     {
@@ -18,6 +19,11 @@ class DaftarSidang extends Model
     public function dosen_2()
     {
         return $this->belongsTo(Dosen::class, 'dosen2_id')->select('id', 'nama');
+    }
+
+    public function mahasiswa()
+    {
+        return $this->hasMany(Mahasiswa::class, 'id', 'mahasiswa_id');
     }
 
     public function mahasiswaNama()

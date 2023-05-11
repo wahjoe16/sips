@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Imports\DosenImport;
+use App\Models\DaftarSeminar;
 use App\Models\DaftarSidang;
 use App\Models\Dosen;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -46,6 +48,7 @@ class DosenController extends Controller
 
     public function dashboardDosen()
     {
+        Session::put('page', 'dasboardDosen');
         return view('dosen.dashboard');
     }
 
@@ -55,8 +58,89 @@ class DosenController extends Controller
         return redirect()->route('loginDosen');
     }
 
+    public function viewDaftarSeminar($slug)
+    {
+        Session::put('page', 'viewDaftarSeminar');
+
+        if ($slug == 'Teknik Pertambangan') {
+            $title = 'Kolokium Skripsi';
+            $daftarSeminar = DaftarSeminar::where([
+                'program_studi' => 'Teknik Pertambangan',
+                'status' => 0
+            ])->get();
+        } elseif ($slug == 'Teknik Industri') {
+            $title = 'Seminar';
+            $daftarSeminar = DaftarSeminar::where([
+                'program_studi' => 'Teknik Industri',
+                'status' => 0
+            ])->get();
+        } elseif ($slug == 'Perencanaan Wilayah dan Kota') {
+            $title = 'Sidang Pembahasan';
+            $daftarSeminar = DaftarSeminar::where([
+                'program_studi' => 'Perencanaan Wilayah dan Kota',
+                'status' => 0
+            ])->get();
+        }
+        return view('dosen.daftar_seminar', compact('slug', 'daftarSeminar', 'title'));
+    }
+
+    public function showDaftarSeminar(Request $request, $id)
+    {
+        $seminar = DaftarSeminar::find($id);
+        // dd($seminar);
+
+        if ($request->isMethod('POST')) {
+            $request->validate([
+                'status' => 'required',
+                'keterangan' => 'required_if:status,2'
+            ], [
+                'keterangan.required_if' => 'Keterangan harus diisi',
+                'status.required' => 'Status approval harus diverifikasi'
+            ]);
+
+            $seminar->fill($request->input());
+            $seminar->save();
+            return redirect()->route('viewDaftarSeminar', [
+                'slug' => 'Perencanaan Wilayah dan Kota',
+                'slug' => 'Teknik Industri',
+                'slug' => 'Teknik Pertambangan'
+            ])->with('success_message', 'Status Approval berhasil ditambahkan');
+        }
+
+        return view('dosen.show_daftar_seminar', compact('seminar'));
+    }
+
+    public function rekapDaftarSeminar($slug)
+    {
+        Session::put('page', 'rekapDaftarSeminar');
+
+        if ($slug == 'Teknik Pertambangan') {
+            $title = 'Data Kolokium Skripsi';
+            $rekapSeminar = DaftarSeminar::where([
+                'program_studi' => 'Teknik Pertambangan',
+                'status' => 1
+            ])->get();
+        } elseif ($slug == 'Teknik Industri') {
+            $title = 'Data Seminar Skripsi';
+            $rekapSeminar = DaftarSeminar::where([
+                'program_studi' => 'Teknik Industri',
+                'status' => 1
+            ])->get();
+        } elseif ($slug == 'Perencanaan Wilayah dan Kota') {
+            $title = 'Data Sidang Pembahasan';
+            $rekapSeminar = DaftarSeminar::where([
+                'program_studi' => 'Perencanaan Wilayah dan Kota',
+                'status' => 1
+            ])->get();
+        }
+
+        return view('dosen.rekap_daftar_seminar', compact('slug', 'rekapSeminar', 'title'));
+    }
+
     public function viewDaftarSidang($slug)
     {
+        Session::put('page', 'viewDaftarSidang');
+
         if ($slug == 'Teknik Pertambangan') {
             $daftarSidang = DaftarSidang::where([
                 'program_studi' => 'Teknik Pertambangan',
@@ -72,13 +156,31 @@ class DosenController extends Controller
                 'program_studi' => 'Perencanaan Wilayah dan Kota',
                 'status' => 0
             ])->get();
-        } elseif ($slug == 'Program Profesi Insinyur') {
-            # code...
-        } elseif ($slug == 'Magister Perencanaan Wilayah dan Kota') {
-            # code...
         }
 
         return view('dosen.daftar_sidang', compact('slug', 'daftarSidang'));
+    }
+
+    public function showDaftarSidang(Request $request, $id)
+    {
+        $sidang = DaftarSidang::find($id)->with('mahasiswa')->first();
+        // dd($sidang);
+
+        if ($request->isMethod('POST')) {
+            $request->validate([
+                'status' => 'required',
+                'keterangan' => 'required_if:status,2'
+            ], [
+                'keterangan.required_if' => 'Keterangan harus diisi',
+                'status.required' => 'Status approval harus diverifikasi'
+            ]);
+
+            $sidang->fill($request->input());
+            $sidang->save();
+            return redirect()->route('dashboardDosen')->with('success_message', 'Status Approval berhasil ditambahkan');
+        }
+
+        return view('dosen.show_daftar_sidang', compact('sidang'));
     }
 
     public function viewDosen()

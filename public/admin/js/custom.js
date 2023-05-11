@@ -8,6 +8,8 @@ $(document).ready(function(){
     $("#semester").DataTable();
     $("#tahun_ajaran").DataTable();
     $("#daftarSidangMahasiswa").DataTable();
+    $("#daftarSeminarMahasiswa").DataTable();
+    $("#rekapSeminarMahasiswa").DataTable();
     
     
     $(".nav-item").removeClass("active");

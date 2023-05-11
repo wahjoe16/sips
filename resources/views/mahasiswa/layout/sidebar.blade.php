@@ -24,9 +24,18 @@
 
         @if(Auth::guard('mahasiswa')->user()->program_studi == 'Teknik Pertambangan')
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('daftarSeminar', 'Teknik Pertambangan') }}">
+                <i class="icon-paper menu-icon"></i>
+                <span class="menu-title">Kolokium Skripsi</span>
+            </a>
+        </li>
+        @endif
+
+        @if(Auth::guard('mahasiswa')->user()->program_studi == 'Teknik Pertambangan')
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('daftarSidang', 'Teknik Pertambangan') }}">
                 <i class="icon-paper menu-icon"></i>
-                <span class="menu-title">Daftar Sidang</span>
+                <span class="menu-title">Sidang Skripsi</span>
             </a>
         </li>
         @endif
@@ -42,9 +51,18 @@
 
         @if(Auth::guard('mahasiswa')->user()->program_studi == 'Perencanaan Wilayah dan Kota')
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('daftarSeminar', 'Perencanaan Wilayah dan Kota') }}">
+                <i class="icon-paper menu-icon"></i>
+                <span class="menu-title">Sidang Pembahasan</span>
+            </a>
+        </li>
+        @endif
+
+        @if(Auth::guard('mahasiswa')->user()->program_studi == 'Perencanaan Wilayah dan Kota')
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('daftarSidang', 'Perencanaan Wilayah dan Kota') }}">
                 <i class="icon-paper menu-icon"></i>
-                <span class="menu-title">Daftar Sidang</span>
+                <span class="menu-title">Sidang Terbuka</span>
             </a>
         </li>
         @endif
