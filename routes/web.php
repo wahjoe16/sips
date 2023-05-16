@@ -3,7 +3,12 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DosenController;
 use App\Http\Controllers\Admin\MahasiswaController;
+use App\Http\Controllers\DaftarSeminarController;
+use App\Http\Controllers\DaftarSidangController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SemsterController;
+use App\Http\Controllers\TahunAjaranController;
+use App\Models\DaftarSidang;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -56,10 +61,10 @@ Route::prefix('/mahasiswa')->group(function () {
         Route::match(['get', 'post'], '/update-mahasiswa-password', [MahasiswaController::class, 'updatePassword'])->name('updatePasswordMahasiswa');
 
         // Route untuk daftar sidang
-        Route::match(['get', 'post'], '/daftar-seminar/{slug}', [MahasiswaController::class, 'daftarSeminar'])->name('daftarSeminar');
+        Route::match(['get', 'post'], '/daftar-seminar/{slug}', [DaftarSeminarController::class, 'daftarSeminar'])->name('daftarSeminar');
 
         // Route untuk daftar sidang
-        Route::match(['get', 'post'], '/daftar-sidang/{slug}', [MahasiswaController::class, 'daftarSidang'])->name('daftarSidang');
+        Route::match(['get', 'post'], '/daftar-sidang/{slug}', [DaftarSidangController::class, 'daftarSidang'])->name('daftarSidang');
 
         // Route untuk logout admin
         Route::get('/logout', [MahasiswaController::class, 'logoutMahasiswa'])->name('logoutMahasiswa');
@@ -82,22 +87,37 @@ Route::prefix('/dosen')->group(function () {
         Route::match(['get', 'post'], '/update-dosen-password', [DosenController::class, 'updatePassword'])->name('updatePasswordDosen');
 
         // Route untuk view daftar seminar mahasiswa
-        Route::get('/view-daftar-seminar/{slug}', [DosenController::class, 'viewDaftarSeminar'])->name('viewDaftarSeminar');
+        Route::get('/view-daftar-seminar/{slug}', [DaftarSeminarController::class, 'viewDaftarSeminar'])->name('viewDaftarSeminar');
 
         // route rekap daftar seminar
-        Route::get('/rekap-daftar-seminar/{slug}', [DosenController::class, 'rekapDaftarSeminar'])->name('rekapDaftarSeminar');
+        Route::get('/rekap-daftar-seminar/{slug}', [DaftarSeminarController::class, 'index'])->name('daftar-seminar.index');
+
+        // route data rekap daftar seminar
+        Route::get('/data-rekap-daftar-seminar/{slug}', [DaftarSeminarController::class, 'data'])->name('daftar-seminar.data');
+
+        // route untuk datatable seminar
+        Route::get('rekap-data-seminar/{slug}', [DaftarSeminarController::class, 'dataSeminar'])->name('dataSeminar');
 
         // route show rekap seminar mahasiswa
-        Route::get('/show-rekap-seminar/{slug}', [DosenController::class, 'showRekapSeminar'])->name('showRekapSeminar');
+        Route::get('/show-rekap-seminar/{slug}', [DaftarSeminarController::class, 'showRekapSeminar'])->name('showRekapSeminar');
+
+        // Route untuk approval daftar sidang mahasiswa
+        Route::match(['get', 'post'], '/approval-daftar-seminar/{id}', [DaftarSeminarController::class, 'showDaftarSeminar'])->name('showDaftarSeminar');
 
         // Route untuk view daftar sidang mahasiswa
-        Route::get('/view-daftar-sidang/{slug}', [DosenController::class, 'viewDaftarSidang'])->name('viewDaftarSidang');
+        Route::get('/view-daftar-sidang/{slug}', [DaftarSidangController::class, 'viewDaftarSidang'])->name('viewDaftarSidang');
 
         // Route untuk approval daftar sidang mahasiswa
-        Route::match(['get', 'post'], '/approval-daftar-seminar/{id}', [DosenController::class, 'showDaftarSeminar'])->name('showDaftarSeminar');
+        Route::match(['get', 'post'], '/approval-daftar-sidang/{id}', [DaftarSidangController::class, 'showDaftarSidang'])->name('showDaftarSidang');
 
-        // Route untuk approval daftar sidang mahasiswa
-        Route::match(['get', 'post'], '/approval-daftar-sidang/{id}', [DosenController::class, 'showDaftarSidang'])->name('showDaftarSidang');
+        // route rekap daftar seminar
+        Route::get('/rekap-daftar-sidang/{slug}', [DaftarSidangController::class, 'index'])->name('daftar-sidang.index');
+
+        // route data rekap daftar seminar
+        Route::get('/data-rekap-daftar-sidang/{slug}', [DaftarSidangController::class, 'data'])->name('daftar-sidang.data');
+
+        // route show rekap seminar mahasiswa
+        Route::get('/show-rekap-sidang/{slug}', [DaftarSidangController::class, 'showRekapSidang'])->name('showRekapSidang');
 
         // Route logout dosen
         Route::get('/logout', [DosenController::class, 'logoutDosen'])->name('logoutDosen');
@@ -123,19 +143,19 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('/logout', [AdminController::class, 'logoutAdmin'])->name('logoutAdmin');
 
         // route untuk view semester
-        Route::get('/semester', [AdminController::class, 'viewSemester'])->name('viewSemester');
+        Route::get('/semester', [SemesterController::class, 'viewSemester'])->name('viewSemester');
 
         // Route untuk tambah data semester
-        Route::match(['get', 'post'], '/add-edit-semester/{id?}', [AdminController::class, 'addEditSemester'])->name('addEditSemester');
+        Route::match(['get', 'post'], '/add-edit-semester/{id?}', [SemesterController::class, 'addEditSemester'])->name('addEditSemester');
 
         // route untuk view tahun ajaran
-        Route::get('/tahun_ajaran', [AdminController::class, 'viewTahunAjaran'])->name('viewTahunAjaran');
+        Route::get('/tahun_ajaran', [TahunAjaranController::class, 'viewTahunAjaran'])->name('viewTahunAjaran');
 
         // route untuk view data daftar sidang semua prodi
         Route::get('/view-daftar-sidang', [AdminController::class, 'viewDaftarSidangAll'])->name('viewDaftarSidangAll');
 
         // Route untuk tambah data semester
-        Route::match(['get', 'post'], '/add-edit-tahun_ajaran/{id?}', [AdminController::class, 'addEditTahunAjaran'])->name('addEditTahunAjaran');
+        Route::match(['get', 'post'], '/add-edit-tahun_ajaran/{id?}', [TahunAjaranController::class, 'addEditTahunAjaran'])->name('addEditTahunAjaran');
 
         // Route untuk view dosen
         Route::get('/view-dosen', [DosenController::class, 'viewDosen'])->name('viewDosen');

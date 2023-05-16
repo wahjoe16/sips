@@ -72,100 +72,80 @@
                                         <p class="card-description">Upload Persyaratan</p>
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_1">Bukti pembayaran Kolokium Skripsi</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_1" class="form-control" id="syarat_1">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_1" class="dropify" id="syarat_1">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_1">Bukti pembayaran Kolokium Skripsi</p>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_2" class="dropify" id="syarat_2">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_2">Sertifikat TOEFL</p>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_2">Sertifikat TOEFL</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_2" class="form-control" id="syarat_2">
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_3" class="dropify" id="syarat_3">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_3">Formulir nilai bimbingan skripsi</p>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_4" class="dropify" id="syarat_4">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_4">Formulir kemajuan bimbingan skripsi</p>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_3">Transkrip nilai</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_3" class="form-control" id="syarat_3">
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_5" class="dropify" id="syarat_5">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_5">Formulir persetujuan kolokium skripsi</p>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_6" class="dropify" id="syarat_6">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_6">Formulir kesediaan menghadiri kolokium skripsi</p>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_4">Formulir nilai bimbingan skripsi</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_4" class="form-control" id="syarat_4">
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_7" class="dropify" id="syarat_7">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_7">Pas foto ukuran 4 x 6 sebanyak 2 lembar</p>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_8" class="dropify" id="syarat_8">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_8">Kartu Tanda Mahasiswa</p>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_5">Formulir kemajuan bimbingan skripsi</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_5" class="form-control" id="syarat_5">
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_9" class="dropify" id="syarat_9">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_9">Bukti pembayaran kuliah</p>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_10" class="dropify" id="syarat_10">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_10">Bukti perwalian</p>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_6">Formulir persetujuan kolokium skripsi</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_6" class="form-control" id="syarat_6">
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_11" class="dropify" id="syarat_11">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_11">Bukti bebas pinjaman perpustakaan</p>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_12" class="dropify" id="syarat_12">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_12">Keterangan menghadiri kolokium skripsi (7 kali)</p>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_7">Formulir kesediaan menghadiri kolokium skripsi</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_7" class="form-control" id="syarat_7">
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_13" class="dropify" id="syarat_13">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_13">Draft skripsi (PDF)</p>
                                                     </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_8">Pas foto ukuran 4 x 6 sebanyak 2 lembar</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_8" class="form-control" id="syarat_8">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_9">Kartu Tanda Mahasiswa</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_9" class="form-control" id="syarat_9">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_10">Bukti pembayaran kuliah</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_10" class="form-control" id="syarat_10">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_11">Bukti perwalian</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_11" class="form-control" id="syarat_11">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_12">Bukti bebas pinjaman perpustakaan</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_12" class="form-control" id="syarat_12">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_13">Sertifikat pesantren calon sarjana</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_13" class="form-control" id="syarat_13">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_14">Keterangan menghadiri kolokium skripsi (7 kali)</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_14" class="form-control" id="syarat_14">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_15">Draft skripsi (PDF)</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_15" class="form-control" id="syarat_15">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-5 col-form-label" for="syarat_16">Draft skripsi (DOCX)</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="file" name="syarat_16" class="form-control" id="syarat_16">
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_14" class="dropify" id="syarat_14">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_14">Draft skripsi (DOCX)</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -434,8 +414,8 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Pendaftaran Sidang di Block!</h4>
-                                    <button type="button" class="btn btn-outline-danger btn-fw">Anda Sudah Mendaftarkan Sidang, Tinggal Menunggu Approval dari Koordinator Sidang Skripsi</button>
+                                    <h4 class="card-title">Pengajuan di Block!</h4>
+                                    <button type="button" class="btn btn-outline-danger btn-fw">Pengajuan anda sudah dikirimkan, tinggal menunggu approval dari koordinator sidang skripsi</button>
                                 </div>
                             </div>
                         </div>
@@ -462,6 +442,8 @@
 
 @endsection
 
+@push('scripts')
 <script>
     $('.dropify').dropify();
 </script>
+@endpush

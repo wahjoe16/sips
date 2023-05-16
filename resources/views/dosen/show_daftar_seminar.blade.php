@@ -65,7 +65,22 @@
                                             @elseif ($seminar->mahasiswa['program_studi']=='Teknik Industri')
 
                                             @elseif ($seminar->mahasiswa['program_studi']=='Teknik Pertambangan')
-
+                                            <ul class="list-arrow">
+                                                <li><a href="{{ url('/mahasiswa/seminar/syarat01', $seminar->syarat_1) }}" target="_blank">Bukti pembayaran Kolokium Skripsi</a></li>
+                                                <li><a href="{{ url('/mahasiswa/seminar/syarat02', $seminar->syarat_2) }}" target="_blank">Sertifikat TOEFL</a></li>
+                                                <li><a href="{{ url('/mahasiswa/seminar/syarat03', $seminar->syarat_3) }}" target="_blank">Formulir nilai bimbingan skripsi</a></li>
+                                                <li><a href="{{ url('/mahasiswa/seminar/syarat04', $seminar->syarat_4) }}" target="_blank">Formulir kemajuan bimbingan skripsi</a></li>
+                                                <li><a href="{{ url('/mahasiswa/seminar/syarat05', $seminar->syarat_5) }}" target="_blank">Formulir persetujuan kolokium skripsi</a></li>
+                                                <li><a href="{{ url('/mahasiswa/seminar/syarat06', $seminar->syarat_6) }}" target="_blank">Formulir kesediaan menghadiri kolokium skripsi</a></li>
+                                                <li><a href="{{ url('/mahasiswa/seminar/syarat07', $seminar->syarat_7) }}" target="_blank">Pas foto ukuran 4 x 6 sebanyak 2 lembar</a></li>
+                                                <li><a href="{{ url('/mahasiswa/seminar/syarat08', $seminar->syarat_8) }}" target="_blank">Kartu Tanda Mahasiswa</a></li>
+                                                <li><a href="{{ url('/mahasiswa/seminar/syarat09', $seminar->syarat_9) }}" target="_blank">Bukti pembayaran kuliah</a></li>
+                                                <li><a href="{{ url('/mahasiswa/seminar/syarat10', $seminar->syarat_10) }}" target="_blank">Bukti perwalian</a></li>
+                                                <li><a href="{{ url('/mahasiswa/seminar/syarat11', $seminar->syarat_11) }}" target="_blank">Bukti bebas pinjaman perpustakaan</a></li>
+                                                <li><a href="{{ url('/mahasiswa/seminar/syarat12', $seminar->syarat_12) }}" target="_blank">Keterangan menghadiri kolokium skripsi (7 kali)</a></li>
+                                                <li><a href="{{ url('/mahasiswa/seminar/syarat13', $seminar->syarat_13) }}" target="_blank">Draft skripsi (PDF)</a></li>
+                                                <li><a href="{{ url('/mahasiswa/seminar/syarat14', $seminar->syarat_14) }}" target="_blank">Draft skripsi (DOCX)</a></li>
+                                            </ul>
                                             @endif
                                         </div>
                                     </div>

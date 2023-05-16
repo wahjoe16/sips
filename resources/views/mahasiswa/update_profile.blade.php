@@ -64,6 +64,12 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="angkatan">Angkatan</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="angkatan" class="form-control" id="angkatan" value="{{ Auth::guard('mahasiswa')->user()->angkatan }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="email">E-mail</label>
                             <div class="col-sm-9">
                                 <input type="email" name="email" class="form-control" id="email" value="{{ Auth::guard('mahasiswa')->user()->email }}">

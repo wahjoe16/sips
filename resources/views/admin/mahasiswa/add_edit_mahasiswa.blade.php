@@ -41,26 +41,19 @@
                                 <div class="form-group row">
                                     <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="npm">NPM</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="npm" class="form-control" id="npm" @if(!empty($mahasiswa['npm'])) value="{{ $mahasiswa['npm'] }}" @else value="{{ old('npm') }}" @endif placeholder="NPM">
+                                        <input type="text" name="npm" class="form-control" id="npm" @if(!empty($mahasiswa['npm'])) value="{{ $mahasiswa['npm'] }}" @else value="{{ old('npm') }}" @endif>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="nama">Nama Mahasiswa</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="nama" class="form-control" id="nama" @if(!empty($mahasiswa['nama'])) value="{{ $mahasiswa['nama'] }}" @else value="{{ old('nama') }}" @endif placeholder="Nama mahasiswa">
+                                        <input type="text" name="nama" class="form-control" id="nama" @if(!empty($mahasiswa['nama'])) value="{{ $mahasiswa['nama'] }}" @else value="{{ old('nama') }}" @endif>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="program_studi">Program Studi</label>
                                     <div class="col-sm-9">
-                                        <select name="program_studi" id="program_studi" class="form-control text-dark">
-                                            <option value="">Select</option>
-                                            <option value="Teknik Pertambangan" @if(!empty($mahasiswa['program_studi'])) selected @endif>Teknik Pertambangan</option>
-                                            <option value="Perencanaan Wilayah dan Kota" @if(!empty($mahasiswa['program_studi'])) selected @endif>Perencanaan Wilayah dan Kota</option>
-                                            <option value="Teknik Industri" @if(!empty($mahasiswa['program_studi'])) selected @endif>Teknik Industri</option>
-                                            <option value="Program Profesi Insinyur" @if(!empty($mahasiswa['program_studi'])) selected @endif>Program Profesi Insinyur</option>
-                                            <option value="Magister Perencanaan Wilayah dan Kota" @if(!empty($mahasiswa['program_studi'])) selected @endif>Magister Perencanaan Wilayah dan Kota</option>
-                                        </select>
+                                        <input type="text" name="program_studi" class="form-control" id="program_studi" @if(!empty($mahasiswa['program_studi'])) value="{{ $mahasiswa['program_studi'] }}" @else value="{{ old('program_studi') }}" @endif readonly>
                                     </div>
                                 </div>
                             </div>
@@ -68,19 +61,19 @@
                                 <div class="form-group row">
                                     <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="email">Email</label>
                                     <div class="col-sm-9">
-                                        <input type="email" name="email" class="form-control" id="email" @if(!empty($mahasiswa['email'])) value="{{ $mahasiswa['email'] }}" @else value="{{ old('email') }}" @endif placeholder="Email mahasiswa">
+                                        <input type="email" name="email" class="form-control" id="email" @if(!empty($mahasiswa['email'])) value="{{ $mahasiswa['email'] }}" @else value="{{ old('email') }}" @endif readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="telepon">No. Telepon</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="telepon" class="form-control" id="telepon" @if(!empty($mahasiswa['telepon'])) value="{{ $mahasiswa['telepon'] }}" @else value="{{ old('telepon') }}" @endif placeholder="No. Telepon mahasiswa">
+                                        <input type="text" name="telepon" class="form-control" id="telepon" @if(!empty($mahasiswa['telepon'])) value="{{ $mahasiswa['telepon'] }}" @else value="{{ old('telepon') }}" @endif readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="angkatan">Angkatan</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="angkatan" class="form-control" id="angkatan" @if(!empty($mahasiswa['angkatan'])) value="{{ $mahasiswa['angkatan'] }}" @else value="{{ old('angkatan') }}" @endif placeholder="Angkatan">
+                                        <input type="text" name="angkatan" class="form-control" id="angkatan" @if(!empty($mahasiswa['angkatan'])) value="{{ $mahasiswa['angkatan'] }}" @else value="{{ old('angkatan') }}" @endif readonly>
                                     </div>
                                 </div>
                             </div>

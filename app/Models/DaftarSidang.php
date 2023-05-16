@@ -13,17 +13,17 @@ class DaftarSidang extends Model
 
     public function dosen_1()
     {
-        return $this->belongsTo(Dosen::class, 'dosen1_id')->select('id', 'semester');
+        return $this->belongsTo(Dosen::class, 'dosen1_id', 'id');
     }
 
     public function dosen_2()
     {
-        return $this->belongsTo(Dosen::class, 'dosen2_id')->select('id', 'nama');
+        return $this->belongsTo(Dosen::class, 'dosen2_id', 'id');
     }
 
     public function mahasiswa()
     {
-        return $this->hasMany(Mahasiswa::class, 'id', 'mahasiswa_id');
+        return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id', 'id');
     }
 
     public function mahasiswaNama()

@@ -45,7 +45,7 @@
                                     <td>{{ $ds['mahasiswaNama']['nama'] }}</td>
                                     <td>{{ $ds['judul_skripsi'] }}</td>
                                     <td>
-                                        <a href="{{ route('showDaftarSidang', $ds['id']) }}">
+                                        <a href="{{ route('showDaftarSeminar', $ds['id']) }}">
                                             <i class="mdi mdi-pencil-box" style="font-size: 25px;"></i>
                                         </a>
                                     </td>
@@ -76,7 +76,7 @@
                                     <td>{{ $ds['mahasiswaNama']['nama'] }}</td>
                                     <td>{{ $ds['judul_skripsi'] }}</td>
                                     <td>
-                                        <a href="{{ route('showDaftarSidang', $ds['id']) }}">
+                                        <a href="{{ route('showDaftarSeminar', $ds['id']) }}">
                                             <i class="mdi mdi-pencil-box" style="font-size: 25px;"></i>
                                         </a>
                                     </td>

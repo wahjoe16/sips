@@ -42,6 +42,10 @@
                                             <p class="font-weight-bold">{{ $sidang->mahasiswa['angkatan'] }}</p><br>
                                             <p>Judul Skripsi</p>
                                             <p class="font-weight-bold">{{ $sidang->judul_skripsi }}</p><br>
+                                            <p>Dosen Pembimbing 1</p>
+                                            <p class="font-weight-bold">{{ $sidang->dosen_1['nama'] }}</p><br>
+                                            <p>Dosen Pembimbing 2</p>
+                                            <p class="font-weight-bold">{{ $sidang->dosen_2['nama'] }}</p><br>
                                         </address>
                                     </div>
                                 </div>
@@ -61,7 +65,10 @@
                                             @elseif ($sidang->mahasiswa['program_studi']=='Teknik Industri')
 
                                             @elseif ($sidang->mahasiswa['program_studi']=='Teknik Pertambangan')
-
+                                            <ul class="list-arrow">
+                                                <li><a href="{{ url('/mahasiswa/sidang/syarat01', $sidang->syarat_1) }}" target="_blank">Transkrip Nilai</a></li>
+                                                <li><a href="{{ url('/mahasiswa/sidang/syarat02', $sidang->syarat_2) }}" target="_blank">Sertifikat Pesantren Calon Sarjana</a></li>
+                                            </ul>
                                             @endif
                                         </div>
                                     </div>

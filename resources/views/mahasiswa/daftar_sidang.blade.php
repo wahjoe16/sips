@@ -35,7 +35,7 @@
                     </div>
                     @endif
 
-                    @if(is_null($daftarSidang))
+                    @if(is_null($sidang)|| $sidang->status == 2)
 
                     @if($slug == 'Teknik Pertambangan')
                     <form class="form-sample" action="{{ route('daftarSidang', 'Teknik Pertambangan') }}" method="post" enctype="multipart/form-data">@csrf
@@ -56,9 +56,31 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="tahun_ajaran_id">Judul Skripsi</label>
+                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="judul_skripsi">Judul Skripsi</label>
                                             <div class="col-sm-9">
                                                 <textarea name="judul_skripsi" class="form-control" id="" cols="30" rows="10"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="dosen1_id">Dosen Pembimbing 1</label>
+                                            <div class="col-sm-9">
+                                                <select name="dosen1_id" id="dosen1_id" class="form-control text-dark">
+                                                    <option value="">Pilih</option>
+                                                    @foreach($dosen as $d)
+                                                    <option value="{{ $d['id'] }}">{{ $d['nama'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="dosen2_id">Dosen Pembimbing 2</label>
+                                            <div class="col-sm-9">
+                                                <select name="dosen2_id" id="dosen2_id" class="form-control text-dark">
+                                                    <option value="">Pilih</option>
+                                                    @foreach($dosen as $d)
+                                                    <option value="{{ $d['id'] }}">{{ $d['nama'] }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -71,99 +93,18 @@
                                     <div class="card-body">
                                         <p class="card-description">Upload Persyaratan</p>
                                         <div class="row">
-                                            <div class="col-6">
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 1</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_1" class="form-control" id="syarat_1">
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_1" class="dropify" id="syarat_1">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_1">Transkrip Nilai</p>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="syarat_2" class="dropify" id="syarat_2">
+                                                        <p for="exampleInputEmail2" class="col-form-label text-center" for="syarat_2">Sertifikat Pesantren Calon Sarjana</p>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_2">Syarat 2</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_2" class="form-control" id="syarat_2">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 3</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_3" class="form-control" id="syarat_3">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 4</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_4" class="form-control" id="syarat_4">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 5</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_5" class="form-control" id="syarat_5">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 6</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_6" class="form-control" id="syarat_6">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 7</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_7" class="form-control" id="syarat_7">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 8</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_8" class="form-control" id="syarat_8">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_2">Syarat 9</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_9" class="form-control" id="syarat_9">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 10</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_10" class="form-control" id="syarat_10">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 11</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_11" class="form-control" id="syarat_11">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 12</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_12" class="form-control" id="syarat_12">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 13</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_13" class="form-control" id="syarat_13">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 14</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_14" class="form-control" id="syarat_14">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="syarat_1">Syarat 15</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="file" name="syarat_15" class="form-control" id="syarat_15">
-                                                    </div>
-                                                </div>
+                                                <br>
                                             </div>
                                         </div>
 
@@ -210,6 +151,28 @@
                                             <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="tahun_ajaran_id">Judul Skripsi</label>
                                             <div class="col-sm-9">
                                                 <textarea name="judul_skripsi" class="form-control" id="" cols="30" rows="10"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="dosen1_id">Dosen Pembimbing 1</label>
+                                            <div class="col-sm-9">
+                                                <select name="dosen1_id" id="dosen1_id" class="form-control text-dark">
+                                                    <option value="">Pilih</option>
+                                                    @foreach($dosen as $d)
+                                                    <option value="{{ $d['id'] }}">{{ $d['nama'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="dosen2_id">Dosen Pembimbing 2</label>
+                                            <div class="col-sm-9">
+                                                <select name="dosen2_id" id="dosen2_id" class="form-control text-dark">
+                                                    <option value="">Pilih</option>
+                                                    @foreach($dosen as $d)
+                                                    <option value="{{ $d['id'] }}">{{ $d['nama'] }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -345,6 +308,28 @@
                                                 <textarea name="judul_skripsi" class="form-control" id="" cols="30" rows="10"></textarea>
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="dosen1_id">Dosen Pembimbing 1</label>
+                                            <div class="col-sm-9">
+                                                <select name="dosen1_id" id="dosen1_id" class="form-control text-dark">
+                                                    <option value="">Pilih</option>
+                                                    @foreach($dosen as $d)
+                                                    <option value="{{ $d['id'] }}">{{ $d['nama'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label" for="dosen2_id">Dosen Pembimbing 2</label>
+                                            <div class="col-sm-9">
+                                                <select name="dosen2_id" id="dosen2_id" class="form-control text-dark">
+                                                    <option value="">Pilih</option>
+                                                    @foreach($dosen as $d)
+                                                    <option value="{{ $d['id'] }}">{{ $d['nama'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -394,14 +379,25 @@
                     </form>
                     @endif
 
-                    @else
-
+                    @elseif ($sidang->status == 0)
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Pendaftaran Sidang di Block!</h4>
                                     <button type="button" class="btn btn-outline-danger btn-fw">Anda Sudah Mendaftarkan Sidang, Tinggal Menunggu Approval dari Koordinator Sidang Skripsi</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @elseif ($sidang->status == 1)
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Selamat!</h4>
+                                    <button type="button" class="btn btn-outline-success btn-fw">Pengajuan anda sudah disetujui, tinggal menunggu informasi selanjutnya.</button>
                                 </div>
                             </div>
                         </div>

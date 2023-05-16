@@ -26,6 +26,7 @@
     <!-- datatables -->
     <link rel="stylesheet" href="{{ url('admin/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ url('admin/css/dataTables.bootstrap4.min.css') }}">
+    @stack('css')
 </head>
 
 <body>
@@ -80,6 +81,7 @@
 
     <!-- sweet alert 2 -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @stack('scripts')
 </body>
 
 </html>
